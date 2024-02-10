@@ -4,7 +4,12 @@ export const RickMortyAPI = () => {
     const [infoData, setInfoData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {};
+        const fetchData = async () => {
+            const response = await fetch("https://rickandmortyapi.com/api/character");
+            const data = await response.json();
+            console.log(data.results);
+        };
+        fetchData();
     },[])
 
 
@@ -12,6 +17,8 @@ export const RickMortyAPI = () => {
 
 
   return (
-    <div>RickMortyAPI</div>
+    <div>
+        <h2>RickMortyAPI</h2>
+    </div>
   )
 }
