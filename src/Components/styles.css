@@ -1,0 +1,17 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    gap: 10px;
+}
+
+.card div{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    margin: 0 10px;
+    border-radius: 13px;
+    padding: 9px;
+}
+
+.card div img{
+    width: 100px;
+}
