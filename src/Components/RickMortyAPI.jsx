@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./styles.css"
+import gsap from 'gsap';
 
 export const RickMortyAPI = () => {
     const [infoData, setInfoData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const monElementRef = useRef(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,6 +15,13 @@ export const RickMortyAPI = () => {
             setInfoData(data.results);
         };
         fetchData();
+        const monElement = monElementRef.current;
+
+        // Utilisez GSAP pour animer l'élément
+        gsap.to(monElement, { duration: 1, x: 200, y: 100 });
+        return () => {
+            gsap.killTweensOf(monElement);
+          };
     },[]);
 
     const filteredData = infoData.filter((info) =>
@@ -35,6 +44,7 @@ export const RickMortyAPI = () => {
                 
             />
         </div>
+        <div ref={monElementRef}>Bonjour !</div>
         <div className='card'>
             {
                 filteredData.map(info =>(
